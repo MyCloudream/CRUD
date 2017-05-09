@@ -1,0 +1,38 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ include file="../../formBase.jsp"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<style type="text/css">
+.vtb {
+	width: 100%;
+}
+
+.vtb tr td {
+	width: 80%;
+}
+
+.vtb tr th {
+	width: 20%;
+}
+</style>
+</head>
+<body>
+	<form class="formobj" method="post" action="/busi/ChapterManagerAdd.do">
+		<table class="vtb">
+			<tr>
+				<th><span class="t_t">*</span>本章名称:</th>
+				<td><input type="text" name="name" datatype=s2-20
+					errormsg="请输入正确的章节名称" nullmsg="请填写信息！"><span
+					class="Validform_checktip">本章名称</span></td>
+			</tr>
+			<tr>
+				<th><span class="t_t">*</span>本章简介:</th>
+				<td><textarea name="cdesc" cols="70" rows="15" datatype=s2-500 errormsg="请输入正确的章节名称" nullmsg="请填写信息！"></textarea>
+				<br/><span class="Validform_checktip">本章简介，500字以内</span></td>
+			</tr>
+		</table>
+		<span class="thidden"><input type="button" id="btn_sub"></span>
+	</form>
+</body>
+</html>
