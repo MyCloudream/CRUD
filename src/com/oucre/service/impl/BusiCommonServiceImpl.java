@@ -13,11 +13,9 @@ import com.oucre.core.util.EncryptUtil;
 import com.oucre.dao.ResourceDao;
 import com.oucre.dao.RoleDao;
 import com.oucre.dao.RoleResourceDao;
-import com.oucre.dao.StudentDao;
 import com.oucre.dao.UserDao;
 import com.oucre.pojo.Resource;
 import com.oucre.pojo.Role;
-import com.oucre.pojo.Student;
 import com.oucre.pojo.User;
 import com.oucre.service.BusiCommonService;
 
@@ -37,9 +35,6 @@ public class BusiCommonServiceImpl implements BusiCommonService {
 	@Autowired
 	private UserDao userDao;
 	
-	@Autowired
-	private StudentDao studentDao;
-
 	@Override
 	public List<Role> findAllRole() {
 		return roleDao.findAllRole();
@@ -166,11 +161,6 @@ public class BusiCommonServiceImpl implements BusiCommonService {
 	@Override
 	public List<User> findAllUsers() {
 		return userDao.findAllUsers();
-	}
-	
-	@Override
-	public Student findStudentByQQ(String qq){
-		return studentDao.findStudentByQQ(qq);
 	}
 
 }

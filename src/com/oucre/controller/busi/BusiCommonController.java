@@ -14,7 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.oucre.core.mode.json.AjaxJson;
 import com.oucre.pojo.Role;
-import com.oucre.pojo.Student;
 import com.oucre.pojo.User;
 import com.oucre.service.BusiCommonService;
 
@@ -99,10 +98,5 @@ public class BusiCommonController {
 	public @ResponseBody
 	List<User> findAllUsers() {
 		return commonService.findAllUsers();
-	}
-	
-	@RequestMapping(value = "/findStudentByQQ.do")
-	public @ResponseBody Student findStudentByQQ(@RequestParam(value = "qq") String qq) {
-		return commonService.findStudentByQQ(qq);
 	}
 }
