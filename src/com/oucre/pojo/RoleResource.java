@@ -12,7 +12,7 @@ import javax.persistence.Table;
  * RoleResource entity. @author MyEclipse Persistence Tools
  */
 @Entity
-@Table(name = "role_resource", catalog = "mycruit")
+@Table(name = "role_resource", catalog = "uoumomteaching")
 public class RoleResource implements java.io.Serializable {
 
 	// Fields

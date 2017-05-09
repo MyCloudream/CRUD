@@ -9,7 +9,7 @@
 			<img alt="" src="<%=path%>/images/home/ucai_logo.png" height="80px" width="160px" style="margin: 5px 0px 0px 5px">
 		</div> --%>
 		<div style="width: 600px;height: 80px;float: left;">
-			<h1 style="margin: 18px 0px 0px 5px;font-size: 28px;">优才学院Android教学部招生管理系统</h1>
+			<h1 style="margin: 18px 0px 0px 5px;font-size: 28px;">幽梦平台后台管理系统</h1>
 		</div>
 	</div>
 	<!-- 右下菜单按钮 -->
