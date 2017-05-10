@@ -18,6 +18,7 @@
 </style>
 <script type="text/javascript">
 	$(function() {
+		// 获取全部章
 		$.ajax({
 			type : "POST",
 			url : "/busi/ChapterManager.do",
@@ -34,14 +35,44 @@
 					str += "<option value=\""+data.rows[i].id+"\">" + data.rows[i].name + "</option>";
 				}
 				$("#chapter").append(str);
+				// 选中指定章
+				$("select[name='chid'] option[value='" + formdata[0].chid + "']").attr("selected",true);
 			}
 		});
+		
+		// 获取该章的全部小节
+		var chid = formdata[0].chid;
+		$.ajax({
+			type : "POST",
+			url : "/busi/SectionManager.do",
+			data : {
+				rows : 200,  // 获取所有小节
+				page:1,
+				sort:"id",
+				order:"asc",
+				chid:chid,
+				type:1  // 表示查找所有的视频小节
+			},
+			dataType : "json",
+			success : function(data) {
+				var str = "";
+				for(var i=0;i<data.rows.length;i++){
+					str += "<option value=\""+data.rows[i].id+"\">" + data.rows[i].name + "</option>";
+				}
+				$("#section").append(str);
+				// 选中指定小节
+				$("select[name='seid'] option[value='" + formdata[0].seid + "']").attr("selected",true);
+			}
+		});
+		// 获取
+		valform("id", formdata[0].id, "");
+		valform("Qanda", formdata[0].Qanda, "textarea");
 	});
 	
 	// 下拉列表选中事件  二级联动
-	function chapterChange(osel){
+	function chapterChange(opt){
 		$("#section").empty();// 先清空，防止堆积
-		var chid = osel.options[osel.selectedIndex].value;
+		var chid = opt.options[opt.selectedIndex].value;
 		$.ajax({
 			type : "POST",
 			url : "/busi/SectionManager.do",
@@ -66,7 +97,7 @@
 </script>
 </head>
 <body>
-	<form class="formobj" method="post" action="/busi/AssetsManagerAdd.do">
+	<form class="formobj" method="post" action="/busi/QandaManagerUpd.do">
 		<table class="vtb">
 			<tr>
 				<th><span class="t_t">*</span>所属章:</th>
@@ -79,14 +110,14 @@
 				</select><span class="Validform_checktip"></span></td>
 			</tr>
 			<tr>
-				<th><span class="t_t">*</span>资源路径:</th>
-				<td><input type="text" name="url" datatype=url
-					errormsg="请输入正确的资源路径" nullmsg="请填写信息！" style="width:70%;"><span
-					class="Validform_checktip">资源下载路径，比如百度云地址</span></td>
+				<th><span class="t_t">*</span>课程问答:</th>
+				<td><textarea name="qanda" cols="100" rows="25" datatype=s2-50000 errormsg="请输入正确的课程笔记内容" nullmsg="请填写信息！"></textarea>
+				<br/><span class="Validform_checktip">本小节课程问答题</span></td>
 			</tr>
 		</table>
 		<span class="thidden">
 			<input type="button" id="btn_sub">
+			<input type="hidden" name="id" type="text">
 		</span>
 	</form>
 </body>

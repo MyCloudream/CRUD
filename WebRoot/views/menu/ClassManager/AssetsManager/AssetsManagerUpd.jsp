@@ -111,7 +111,7 @@
 			</tr>
 			<tr>
 				<th><span class="t_t">*</span>资源路径:</th>
-				<td><input type="text" name="url" datatype=s2-2000
+				<td><input type="text" name="url" datatype=url
 					errormsg="请输入正确的资源路径" nullmsg="请填写信息！" style="width:70%;"><span
 					class="Validform_checktip">资源下载路径，比如百度云地址</span></td>
 			</tr>

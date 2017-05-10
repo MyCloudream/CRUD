@@ -66,7 +66,7 @@
 </script>
 </head>
 <body>
-	<form class="formobj" method="post" action="/busi/AssetsManagerAdd.do">
+	<form class="formobj" method="post" action="/busi/QandaManagerAdd.do">
 		<table class="vtb">
 			<tr>
 				<th><span class="t_t">*</span>所属章:</th>
@@ -79,10 +79,9 @@
 				</select><span class="Validform_checktip"></span></td>
 			</tr>
 			<tr>
-				<th><span class="t_t">*</span>资源路径:</th>
-				<td><input type="text" name="url" datatype=url
-					errormsg="请输入正确的资源路径" nullmsg="请填写信息！" style="width:70%;"><span
-					class="Validform_checktip">资源下载路径，比如百度云地址</span></td>
+				<th><span class="t_t">*</span>课程问答:</th>
+				<td><textarea name="qanda" cols="100" rows="25" datatype=s2-50000 errormsg="请输入正确的课程笔记内容" nullmsg="请填写信息！"></textarea>
+				<br/><span class="Validform_checktip">本小节课程问答题</span></td>
 			</tr>
 		</table>
 		<span class="thidden">
