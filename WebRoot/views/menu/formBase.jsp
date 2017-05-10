@@ -181,7 +181,6 @@ body {
 		if (type == "select") {
 			$("select[name='" + name + "'] option[value='" + value + "']").attr("selected", true);
 			/* $("#select").val(value); */
-			alert(name+":"+value)
 			return;
 		}
 	}

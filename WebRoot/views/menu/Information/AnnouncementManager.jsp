@@ -36,8 +36,8 @@
 					width : 300,
 					sortable : true
 				}, {
-					field : 'type',
-					title : '类型',
+					field : 'content',
+					title : '内容',
 					width : 300,
 					sortable : true
 				}, {
