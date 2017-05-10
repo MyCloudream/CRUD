@@ -73,6 +73,13 @@ public class SectionDaoImpl extends BaseDao<Section> implements SectionDao{
 			 */
 			String Hql = " from Section where 1=1 ";
 			String orderby = "";
+			if (map.get("chid") != null) {
+				Hql += " and chid = " + map.get("chid");
+			}
+			// 根据类型查找
+			if (map.get("type") != null) {
+				Hql += " and type = " + map.get("type");
+			}
 			if (easyUiPager.getOrderby() != null) {
 				orderby = " " + easyUiPager.getOrderby() + " ";
 			}

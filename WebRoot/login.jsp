@@ -99,10 +99,10 @@ img {
 </style>
 </head>
 <body style="background: url('<%=path%>/images/login/body.jpg');">
-	<div class="easyui-window easyui-layout" title=" Android教学部招生管理系统用户登录" style="width:600px;height:400px" data-options="iconCls:'icon-man',modal:true,minimizable:false,closable:false,maximizable:false,collapsible:false,draggable:false,shadow:false">
+	<div class="easyui-window easyui-layout" title="用户登录" style="width:600px;height:400px" data-options="iconCls:'icon-man',modal:true,minimizable:false,closable:false,maximizable:false,collapsible:false,draggable:false,shadow:false">
 		<div data-options="region:'north',split:true" style="height:100px;background:#eee;">
-			<img alt="" src="<%=path%>/images/home/ucai_logo.png" height="90" width="300" style="margin-left:10px ">
-			<img alt="" src="<%=path%>/images/home/logo_index2.png" height="90" style="margin-left:10px ">
+			<img alt="" src="<%=path%>/images/home/logo.png" height="100" width="100" style="margin-left:10px ">
+			<span style="font-size:40">幽梦平台后台管理系统</span>
 		</div>
 		<div data-options="region:'center'" style="background:#eee;">
 			<form id="ff" method="post">

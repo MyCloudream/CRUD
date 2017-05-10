@@ -109,11 +109,11 @@
 			btn();
 		}
 		function SectionManagerAdd() {
-			addobj(gb("SectionManagerAdd").name, gb("SectionManagerAdd").link, 1000, 600);
+			addobj(gb("SectionManagerAdd").name, gb("SectionManagerAdd").link, 700, 400);
 		}
 
 		function SectionManagerUpd() {
-			updateobj(gb("SectionManagerUpd").name, gb("SectionManagerUpd").link, 1000, 600);
+			updateobj(gb("SectionManagerUpd").name, gb("SectionManagerUpd").link, 700, 400);
 		}
 		function SectionManagerDel() {
 			delobj("/busi/SectionManagerDel.do");

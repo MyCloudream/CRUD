@@ -40,7 +40,7 @@
 </script>
 </head>
 <body>
-	<form class="formobj" method="post" action="/busi/SectionManagerUpd.do">
+	<form class="formobj" method="post" action="/busi/SectionManagerAdd.do">
 		<table class="vtb">
 			<tr>
 				<th><span class="t_t">*</span>所属章:</th>

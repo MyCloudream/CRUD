@@ -2,7 +2,7 @@
 <%@ include file="views/home/init.jsp"%> 
 <html>
 <head>
-<title>优才学院Android教学部招生管理系统</title>
+<title>幽梦平台后台管理系统</title>
 </head>
 <body class="easyui-layout">
 	<!--头部 -->

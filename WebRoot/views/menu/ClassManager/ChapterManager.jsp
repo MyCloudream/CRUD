@@ -61,11 +61,11 @@
 			btn();
 		}
 		function ChapterManagerAdd() {
-			addobj(gb("ChapterManagerAdd").name, gb("ChapterManagerAdd").link, 1000, 600);
+			addobj(gb("ChapterManagerAdd").name, gb("ChapterManagerAdd").link, 700, 400);
 		}
 
 		function ChapterManagerUpd() {
-			updateobj(gb("ChapterManagerUpd").name, gb("ChapterManagerUpd").link, 1000, 600);
+			updateobj(gb("ChapterManagerUpd").name, gb("ChapterManagerUpd").link, 700, 400);
 		}
 		function ChapterManagerDel() {
 			delobj("/busi/ChapterManagerDel.do");
