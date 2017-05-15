@@ -80,7 +80,7 @@
 			</tr>
 			<tr>
 				<th><span class="t_t">*</span>视频URL:</th>
-				<td><input type="text" name="url" datatype=s2-2000
+				<td><input type="text" name="url" datatype=url
 					errormsg="请输入正确的章节名称" nullmsg="请填写信息！" style="width:70%;"><span
 					class="Validform_checktip">视频在腾讯云上的地址</span></td>
 			</tr>

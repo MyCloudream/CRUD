@@ -80,7 +80,7 @@
 			</tr>
 			<tr>
 				<th><span class="t_t">*</span>课程问答:</th>
-				<td><textarea name="qanda" cols="100" rows="25" datatype=s2-50000 errormsg="请输入正确的课程笔记内容" nullmsg="请填写信息！"></textarea>
+				<td><textarea name="qanda" cols="100" rows="25" datatype=*2-50000 errormsg="请输入正确的课程笔记内容" nullmsg="请填写信息！"></textarea>
 				<br/><span class="Validform_checktip">本小节课程问答题</span></td>
 			</tr>
 		</table>

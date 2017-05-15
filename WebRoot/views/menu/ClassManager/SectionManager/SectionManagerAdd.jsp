@@ -49,7 +49,7 @@
 			</tr>
 			<tr>
 				<th><span class="t_t">*</span>小节名称:</th>
-				<td><input type="text" name="name" datatype=s2-20
+				<td><input type="text" name="name" datatype=*2-20
 					errormsg="请输入正确的章节名称" nullmsg="请填写信息！"><span
 					class="Validform_checktip">本章名称</span></td>
 			</tr>
@@ -68,7 +68,7 @@
 			<tr>
 				<th><span class="t_t">*</span>序号</th>
 				<td><input type="text" name="serno" datatype=n1-2 errormsg="请输入正确的数字序号" nullmsg="请填写信息！">
-					<span class="Validform_checktip">本小节在章中的顺序号码，非常重要！！</span>
+					<span class="Validform_checktip">本小节在章中的顺序号码，非常重要！！第一节请填写1，第二节请填写2，以此类推</span>
 				</td>
 			</tr>
 		</table>

@@ -34,11 +34,16 @@
 					field : 'name',
 					title : '章名称',
 					width : 300,
-					sortable : true
+					sortable : false
 				}, {
 					field : 'cdesc',
 					title : '章节简介',
-					width : 800,
+					width : 700,
+					sortable : false
+				}, {
+					field : 'serno',
+					title : '序号',
+					width : 100,
 					sortable : true
 				}] ],
 				toolbar : ".p",

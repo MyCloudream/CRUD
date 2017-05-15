@@ -60,7 +60,7 @@
 			</tr>
 			<tr>
 				<th><span class="t_t">*</span>小节名称:</th>
-				<td><input type="text" name="name" datatype=s2-20
+				<td><input type="text" name="name" datatype=*2-20
 					errormsg="请输入正确的章节名称" nullmsg="请填写信息！"><span
 					class="Validform_checktip">本章名称</span></td>
 			</tr>

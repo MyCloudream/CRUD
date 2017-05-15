@@ -17,7 +17,7 @@ public class Chapter {
 
 	private String cdesc;
 
-	
+	private Integer serno;
 	
 	public Chapter() {
 		super();
@@ -61,5 +61,14 @@ public class Chapter {
 
 	public void setCdesc(String cdesc) {
 		this.cdesc = cdesc == null ? null : cdesc.trim();
+	}
+	
+	@Column(name = "serno")
+	public Integer getSerno(){
+		return serno;
+	}
+	
+	public void setSerno(Integer serno){
+		this.serno = serno;
 	}
 }
