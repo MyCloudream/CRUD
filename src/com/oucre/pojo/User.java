@@ -23,7 +23,7 @@ public class User implements java.io.Serializable {
 	private String username;
 	private String password;
 	private String tel;
-	private Integer uid;
+	private String qq;
 	private String status;
 
 	// Constructors
@@ -32,26 +32,19 @@ public class User implements java.io.Serializable {
 	public User() {
 	}
 
-	/** minimal constructor */
-	public User(Integer roleid, Integer uid) {
-		this.roleid = roleid;
-		this.uid = uid;
-	}
-
 	public User(Integer id, Integer roleid, String username, String password,
-			String tel, Integer uid, String status) {
+			String tel, String qq, String status) {
 		super();
 		this.id = id;
 		this.roleid = roleid;
 		this.username = username;
 		this.password = password;
 		this.tel = tel;
-		this.uid = uid;
+		this.qq = qq;
 		this.status = status;
 	}
 
 	public User(Integer id) {
-		super();
 		this.id = id;
 	}
 
@@ -103,14 +96,6 @@ public class User implements java.io.Serializable {
 		this.tel = tel;
 	}
 
-	@Column(name = "uid")
-	public Integer getUid() {
-		return this.uid;
-	}
-
-	public void setUid(Integer uid) {
-		this.uid = uid;
-	}
 
 	@Column(name = "status", length = 1)
 	public String getStatus() {
@@ -120,11 +105,21 @@ public class User implements java.io.Serializable {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	
+	
+	@Column(name = "qq", length = 20)
+	public String getQq() {
+		return qq;
+	}
+
+	public void setQq(String qq) {
+		this.qq = qq;
+	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", roleid=" + roleid + ", username=" + username + ", password=" + password + ", tel="
-				+ tel + ", uid=" + uid + ", status=" + status + "]";
+				+ tel + ", qq=" + qq + ", status=" + status + "]";
 	}
 
 }

@@ -53,9 +53,9 @@
 					if (value == 1) {
 						return '管理组';
 					} else if (value == 2) {
-						return '招生人员';
+						return '教务人员';
 					} else {
-						return '未知';
+						return '其他';
 					}
 				}
 			} ] ],

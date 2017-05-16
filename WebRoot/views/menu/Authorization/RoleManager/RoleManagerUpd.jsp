@@ -36,7 +36,7 @@
 			<tr>
 				<th><span class="t_t">*</span>用户组:</th>
 				<td><select name="groups"><option value="1">管理员</option>
-						<option value="2">招生人员</option></select><span class="Validform_checktip">用户组</span></td>
+						<option value="2">教务人员</option></select><span class="Validform_checktip">用户组</span></td>
 			</tr>
 		</table>
 		<span class="thidden"><input type="hidden" name="id"
