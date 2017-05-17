@@ -23,21 +23,21 @@
 			<tr>
 				<th><span class="t_t">*</span>姓名:</th>
 				<td>
-					<input type="text" name="username" datatype=*2-5	errormsg="请输入正确的姓名" nullmsg="请填写信息！" style="width:70%;">
+					<input type="text" name="nick" datatype=*2-5	errormsg="请输入正确的姓名" nullmsg="请填写信息！" style="width:70%;">
 					<span class="Validform_checktip">教务老师姓名或昵称</span>
 				</td>
 			</tr>
 			<tr>
 				<th><span class="t_t">*</span>密码:</th>
 				<td>
-					<input type="password" name="password" datatype=*6-16	errormsg="请输入正确的密码" nullmsg="请填写信息！" style="width:70%;">
+					<input type="password" name="passwd" datatype=*6-16	errormsg="请输入正确的密码" nullmsg="请填写信息！" style="width:70%;">
 					<span class="Validform_checktip">6-16位密码</span>
 				</td>
 			</tr>
 			<tr>
 				<th><span class="t_t">*</span>手机号码:</th>
 				<td>
-					<input type="text" name="tel" datatype=m	errormsg="请输入正确的手机号码" nullmsg="请填写信息！" style="width:70%;">
+					<input type="text" name="mobile" datatype=m	errormsg="请输入正确的手机号码" nullmsg="请填写信息！" style="width:70%;">
 					<span class="Validform_checktip">11位手机密码</span>
 				</td>
 			</tr>

@@ -33,6 +33,6 @@ public interface BusiCommonService {
 
 	public AjaxJson updUser(String username, Object obj);
 
-	public List<User> findAllUsers();
+//	public List<User> findAllUsers();
 
 }

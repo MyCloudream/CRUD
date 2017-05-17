@@ -9,7 +9,14 @@
 	<div class="p">
 		<form id="ff" method="post">
 			<p>
-				<span class="spanr">标题:<input type="text" name="title">&nbsp;&nbsp;<a id="btn" onclick="btn()" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>&nbsp;&nbsp;<a id="btn" onclick="reload()" class="easyui-linkbutton" data-options="iconCls:'icon-reload'">重置 </a></span>
+				<span class="spanr">
+					章节名称:
+					<input type="text" name="name">
+					&nbsp;&nbsp;
+					<a id="btn" onclick="btn()" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>
+					&nbsp;&nbsp;
+					<a id="btn" onclick="reload()" class="easyui-linkbutton" data-options="iconCls:'icon-reload'">重置 </a>
+				</span>
 			</p>
 		</form>
 	</div>
@@ -45,7 +52,7 @@
 					title : '序号',
 					width : 100,
 					sortable : true
-				}] ],
+				} ] ],
 				toolbar : ".p",
 				onRowContextMenu : function(e, rowIndex, rowData) { // 右击事件
 					e.preventDefault(); // 阻止浏览器自带的右键菜单弹出
@@ -58,7 +65,7 @@
 		});
 		function btn() {
 			datagrid.datagrid("load", {
-				title : ff.find('[name="title"]').val(),
+				name : ff.find('[name="name"]').val(),
 			});
 		}
 		function reload() {
@@ -66,11 +73,13 @@
 			btn();
 		}
 		function ChapterManagerAdd() {
-			addobj(gb("ChapterManagerAdd").name, gb("ChapterManagerAdd").link, 700, 400);
+			addobj(gb("ChapterManagerAdd").name, gb("ChapterManagerAdd").link,
+					700, 400);
 		}
 
 		function ChapterManagerUpd() {
-			updateobj(gb("ChapterManagerUpd").name, gb("ChapterManagerUpd").link, 700, 400);
+			updateobj(gb("ChapterManagerUpd").name,
+					gb("ChapterManagerUpd").link, 700, 400);
 		}
 		function ChapterManagerDel() {
 			delobj("/busi/ChapterManagerDel.do");

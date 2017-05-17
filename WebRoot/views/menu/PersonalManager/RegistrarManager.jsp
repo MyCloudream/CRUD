@@ -9,7 +9,11 @@
 	<div class="p">
 		<form id="ff" method="post">
 			<p>
-				<span class="spanr"> 名称:<input type="text" name="name">&nbsp;&nbsp;<a id="btn" onclick="btn()" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>&nbsp;&nbsp;<a id="btn" onclick="reload()" class="easyui-linkbutton" data-options="iconCls:'icon-reload'">重置 </a>
+				<span class="spanr">
+					名称:	<input type="text" name="nick">&nbsp;&nbsp;
+					电话号码:<input type="text" name="mobile">&nbsp;&nbsp;
+					<a id="btn" onclick="btn()" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>&nbsp;&nbsp;
+					<a id="btn" onclick="reload()" class="easyui-linkbutton" data-options="iconCls:'icon-reload'">重置</a>
 				</span>
 			</p>
 		</form>
@@ -33,17 +37,12 @@
 				sortOrder : 'asc',// asc desc
 				idField : 'id',
 				columns : [ [ {
-					field : 'id',
-					title : '资源ID',
-					width : 200,
-					sortable : true
-				}, {
-					field : 'username',
+					field : 'nick',
 					title : '昵称',
 					width : 200,
 					sortable : true
 				}, {
-					field : 'tel',
+					field : 'mobile',
 					title : '电话号码',
 					width : 220,
 					sortable : true
@@ -60,7 +59,7 @@
 					formatter : function(value, row, index) {
 						if (value == "1") {
 							return "管理员";
-						} else if(value == "2"){
+						} else if (value == "2") {
 							return "教务老师";
 						}
 					}
@@ -89,8 +88,8 @@
 		});
 		function btn() {
 			datagrid.datagrid("load", {
-				name : ff.find('[name="name"]').val(),
-				code : ff.find('[name="code"]').val()
+				nick : ff.find('[name="nick"]').val(),
+				mobile: ff.find('[name="mobile"]').val()
 			});
 		}
 		function reload() {
@@ -98,10 +97,12 @@
 			btn();
 		}
 		function RegistrarManagerUpd() {
-			updateobj(gb("RegistrarManagerUpd").name, gb("RegistrarManagerUpd").link, "", "");
+			updateobj(gb("RegistrarManagerUpd").name,
+					gb("RegistrarManagerUpd").link, "", "");
 		}
 		function RegistrarManagerAdd() {
-			addobj(gb("RegistrarManagerAdd").name, gb("RegistrarManagerAdd").link, "", "");
+			addobj(gb("RegistrarManagerAdd").name,
+					gb("RegistrarManagerAdd").link, "", "");
 		}
 		function RegistrarManagerDel() {
 			delobj("/busi/RegistrarManagerDel.do");

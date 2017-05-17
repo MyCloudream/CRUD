@@ -94,9 +94,9 @@ public class BusiCommonController {
 		return commonService.findAllRoleGroups(groups);
 	}
 	
-	@RequestMapping(value = "/findAllUsers.do")
+/*	@RequestMapping(value = "/findAllUsers.do")
 	public @ResponseBody
 	List<User> findAllUsers() {
 		return commonService.findAllUsers();
-	}
+	}*/
 }

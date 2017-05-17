@@ -26,18 +26,18 @@ public class LoginController {
 
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST, params = "method=alogin")
 	public @ResponseBody
-	AjaxJson alogin(@RequestParam(value = "name") String name, @RequestParam(value = "password") String password, @RequestParam(value = "code") String code, HttpServletRequest req, HttpServletResponse res) {
+	AjaxJson alogin(@RequestParam(value = "mobile") String mobile, @RequestParam(value = "passwd") String passwd, @RequestParam(value = "code") String code, HttpServletRequest req, HttpServletResponse res) {
 		if (ValidateUtil.isNull(code)) {
 			return new AjaxJson(false, "验证码不能为空");
 		}
-		if (ValidateUtil.isNull(name)) {
+		if (ValidateUtil.isNull(mobile)) {
 			return new AjaxJson(false, "账户不能为空");
 		}
-		if (ValidateUtil.isNull(password)) {
+		if (ValidateUtil.isNull(passwd)) {
 			return new AjaxJson(false, "密码不能为空");
 		}
 		if (code.equalsIgnoreCase(req.getSession().getAttribute("imageCode").toString())) {
-			Map<String, Object> map = userService.loginUser(name, EncryptUtil.getMD5(password));
+			Map<String, Object> map = userService.loginUser(mobile, EncryptUtil.getMD5(passwd));
 			if (map != null && map.size() > 0) {
 				if (map.get("success").equals("Y")) {
 					req.getSession().setAttribute("user_info", map.get("user"));
@@ -55,14 +55,14 @@ public class LoginController {
 
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST, params = "method=clogin")
 	public @ResponseBody
-	AjaxJson clogin(@RequestParam(value = "name") String name, @RequestParam(value = "password") String password,HttpServletRequest req) {
-		if (ValidateUtil.isNull(name)) {
+	AjaxJson clogin(@RequestParam(value = "mobile") String mobile, @RequestParam(value = "passwd") String passwd,HttpServletRequest req) {
+		if (ValidateUtil.isNull(mobile)) {
 			return new AjaxJson(false, "账户不能为空");
 		}
-		if (ValidateUtil.isNull(password)) {
+		if (ValidateUtil.isNull(passwd)) {
 			return new AjaxJson(false, "密码不能为空");
 		}
-		Map<String, Object> map = userService.loginUser(name, password);
+		Map<String, Object> map = userService.loginUser(mobile, passwd);
 		if (map != null && map.size() > 0) {
 			if (map.get("success").equals("Y")) {
 				Map<String, Object> info = new HashMap<String, Object>();

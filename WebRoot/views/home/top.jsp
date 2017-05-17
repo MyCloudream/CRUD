@@ -14,7 +14,7 @@
 	</div>
 	<!-- 右下菜单按钮 -->
 	<div style="width: 600px; position: absolute;bottom: 5px;right: 10px;text-align: right;">
-		<a href="javascript:void(0)" class="easyui-linkbutton" onclick="userinfo()" data-options="plain:true,iconCls:'icon-man'">用户:&nbsp;${user_info.username}&nbsp&nbsp<%-- <c:if test="${enterprise_info ne null}">企业:&nbsp${enterprise_info.name}&nbsp&nbsp</c:if> --%>角色:&nbsp;${role_info.name}
+		<a href="javascript:void(0)" class="easyui-linkbutton" onclick="userinfo()" data-options="plain:true,iconCls:'icon-man'">用户:&nbsp;${user_info.nick}&nbsp&nbsp<%-- <c:if test="${enterprise_info ne null}">企业:&nbsp${enterprise_info.name}&nbsp&nbsp</c:if> --%>角色:&nbsp;${role_info.name}
 		</a>&nbsp&nbsp<a href="javascript:void(0)" class="easyui-menubutton" data-options="menu:'#mm1',iconCls:'icon-comturn'">控制面板</a> <a href="javascript:void(0)" class="easyui-menubutton" data-options="menu:'#mm2',iconCls:'icon-exit'">注销</a>
 		<div id="mm1">
 			<div data-options="iconCls:'icon-man'" onclick="userinfo()" >个人信息</div>

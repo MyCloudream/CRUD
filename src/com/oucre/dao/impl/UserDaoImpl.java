@@ -65,10 +65,10 @@ public class UserDaoImpl extends BaseDao<User> implements UserDao {
 	}
 
 	@Override
-	public User loginUser(String name, String password) {
+	public User loginUser(String mobile, String passwd) {
 		try {
-			String hql = "from User where tel ='" + name + "' and password = '"
-					+ password + "' ";
+			String hql = "from User where mobile ='" + mobile + "' and passwd = '"
+					+ passwd + "' ";
 			List<User> list = super.findHql(hql);
 			if (list != null && list.size() > 0) {
 				return list.get(0);
@@ -94,76 +94,4 @@ public class UserDaoImpl extends BaseDao<User> implements UserDao {
 			return null;
 		}
 	}
-
-	@Override
-	public Map<String, Object> findUserSearch(Map<String, Object> map,
-			EasyUiPager easyUiPager) {
-		try {
-			String Hql = "from User where 1=1 ";
-			if (map.get("uid") != null) {
-				Hql += "and uid = " + map.get("uid") + " ";
-			}
-			if (map.get("keyword") != null) {
-				Hql += "and (username like '" + map.get("keyword")
-						+ "%' or tel like  '" + map.get("keyword") + "%') ";
-			}
-			String orderby = "";
-			if (easyUiPager.getOrderby() != null) {
-				orderby = " " + easyUiPager.getOrderby() + " ";
-			}
-			List<User> list = super.findHqlByPager(Hql + orderby,
-					(easyUiPager.getPage() - 1) * easyUiPager.getRows(),
-					easyUiPager.getRows());
-			Integer total = super
-					.findByHqlForPageCountEasyUi("select COUNT(*) " + Hql);
-			Map<String, Object> m = new HashMap<String, Object>();
-			m.put("rows", list);
-			m.put("total", total);
-			return m;
-		} catch (Exception e) {
-			logger.error("dao´íÎó", e);
-			return null;
-		}
-	}
-
-	@Override
-	public boolean findExistTel(String tel) {
-		try {
-			List<User> u = super.findHql("from User where tel ='" + tel + "' ");
-			if (u != null && u.size() > 0) {
-				return false;
-			}
-			return true;
-		} catch (Exception e) {
-			logger.error("dao´íÎó", e);
-			return false;
-		}
-	}
-
-	@Override
-	public List<User> findEnterpriseUser(Integer eid) {
-		try {
-			return super.findHql("from User where eid = " + eid);
-		} catch (Exception e) {
-			logger.error("dao´íÎó", e);
-			return null;
-		}
-	}
-	/*
-	 * @Override public User findUserTel(String tel) { try { List<User> u =
-	 * super.find("from User where tel ='" + tel + "' "); if (u != null &&
-	 * u.size() > 0) { return u.get(0); } return null; } catch (Exception e) {
-	 * logger.error("dao³ö´í", e); return null; } }
-	 */
-
-	@Override
-	public List<User> findAllUsers() {
-		try {
-			return super.findHql("from User");
-		} catch (Exception e) {
-			logger.error("dao´íÎó", e);
-			return null;
-		}
-	}
-
 }

@@ -45,11 +45,11 @@ tbale tr td {
 			</c:if> --%>
 			<tr>
 				<th><span class="t_t">*</span>用户手机:</th>
-				<td>${user_info.tel}</td>
+				<td>${user_info.mobile}</td>
 			</tr>
 			<tr>
 				<th><span class="t_t">*</span>用户姓名:</th>
-				<td><input value="${user_info.username}" type="text" name="username" datatype="*2-6" errormsg="用户昵称在2-6个字符" /></td>
+				<td><input value="${user_info.nick}" type="text" name="nick" datatype="*2-6" errormsg="用户昵称在2-6个字符" /></td>
 			</tr>
 		</table>
 		<span class="thidden"><input type="button" id="btn_sub"></span>

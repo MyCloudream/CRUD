@@ -20,9 +20,9 @@ public class User implements java.io.Serializable {
 
 	private Integer id;
 	private Integer roleid;
-	private String username;
-	private String password;
-	private String tel;
+	private String nick;
+	private String passwd;
+	private String mobile;
 	private String qq;
 	private String status;
 
@@ -32,14 +32,14 @@ public class User implements java.io.Serializable {
 	public User() {
 	}
 
-	public User(Integer id, Integer roleid, String username, String password,
-			String tel, String qq, String status) {
+	public User(Integer id, Integer roleid, String nick, String passwd,
+			String mobile, String qq, String status) {
 		super();
 		this.id = id;
 		this.roleid = roleid;
-		this.username = username;
-		this.password = password;
-		this.tel = tel;
+		this.nick = nick;
+		this.passwd = passwd;
+		this.mobile = mobile;
 		this.qq = qq;
 		this.status = status;
 	}
@@ -69,31 +69,31 @@ public class User implements java.io.Serializable {
 		this.roleid = roleid;
 	}
 
-	@Column(name = "username", length = 10)
-	public String getUsername() {
-		return this.username;
+	@Column(name = "nick", length = 10)
+	public String getNick() {
+		return this.nick;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setNick(String nick) {
+		this.nick = nick;
 	}
 
-	@Column(name = "password", length = 22)
-	public String getPassword() {
-		return this.password;
+	@Column(name = "passwd", length = 32)
+	public String getPasswd() {
+		return this.passwd;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPasswd(String passwd) {
+		this.passwd = passwd;
 	}
 
-	@Column(name = "tel")
-	public String getTel() {
-		return tel;
+	@Column(name = "mobile")
+	public String getMobile() {
+		return mobile;
 	}
 
-	public void setTel(String tel) {
-		this.tel = tel;
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
 	}
 
 
@@ -118,8 +118,8 @@ public class User implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", roleid=" + roleid + ", username=" + username + ", password=" + password + ", tel="
-				+ tel + ", qq=" + qq + ", status=" + status + "]";
+		return "User [id=" + id + ", roleid=" + roleid + ", nick=" + nick + ", passwd=" + passwd + ", mobile=" + mobile
+				+ ", qq=" + qq + ", status=" + status + "]";
 	}
 
 }

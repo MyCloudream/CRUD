@@ -13,21 +13,21 @@
 /*    var ff; */
 	$(function() {
 /* 		ff = $("#ff").form(); */
-		$("#ff #name").val("");
-		$("#ff #password").val("");
+		$("#ff #mobile").val("");
+		$("#ff #passwd").val("");
 		$('#submit').bind('click', function() {
-			var name = $("#ff #name").val();
-			var password = $("#ff #password").val();
+			var mobile = $("#ff #mobile").val();
+			var passwd = $("#ff #passwd").val();
 			var code = $("#ff #code").val();
 			if (code == "" || code == null) {
 				$("#error_msg").html("验证码不能为空");
 				return;
 			}
-			if (name == "" || name == null) {
+			if (mobile == "" || mobile == null) {
 				$("#error_msg").html("账户不能为空");
 				return;
 			}
-			if (password == "" || password == null) {
+			if (passwd == "" || passwd == null) {
 				$("#error_msg").html("密码不能为空");
 				return;
 			}
@@ -37,8 +37,8 @@
 				dataType : "json",
 				data : {
 					method : 'alogin',
-					name : name,
-					password : password,
+					mobile : mobile,
+					passwd : passwd,
 					code : code
 				},
 				success : function(data) {
@@ -82,12 +82,12 @@ img {
 	height: 30px;
 }
 
-#name {
+#mobile {
 	height: 30px;
 	width: 160px;
 }
 
-#password {
+#passwd {
 	height: 30px;
 	width: 160px;
 }
@@ -110,11 +110,11 @@ img {
 					<table>
 						<tr>
 							<th>用户名:</th>
-							<td><input type="text" name="name" id="name"></td>
+							<td><input type="text" name="mobile" id="mobile"></td>
 						</tr>
 						<tr>
 							<th>密码:</th>
-							<td><input type="password" name="password" id="password"></td>
+							<td><input type="password" name="passwd" id="passwd"></td>
 						</tr>
 						<tr>
 							<th>验证码:</th>

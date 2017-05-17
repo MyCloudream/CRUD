@@ -20,7 +20,6 @@ public class RegistrarServiceImpl implements RegistrarService{
 	@Override
 	public AjaxJson addRegistrarManager(User entity) {
 		AjaxJson a = new AjaxJson();
-		entity.setStatus("y");
 		if (registrarDao.add(entity) > 0) {
 			a.setSuccess(true);
 			a.setMsg("Ìí¼Ó³É¹¦");

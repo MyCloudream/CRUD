@@ -105,9 +105,9 @@ public class BusiCommonServiceImpl implements BusiCommonService {
 			User user = (User) obj;
 			User u = userDao.findById(user.getId());
 			if (u != null) {
-				if (u.getPassword().equals(EncryptUtil.getMD5(passworda))) {
-					if (!u.getPassword().equals(EncryptUtil.getMD5(paswrod))) {
-						u.setPassword(EncryptUtil.getMD5(paswrod));
+				if (u.getPasswd().equals(EncryptUtil.getMD5(passworda))) {
+					if (!u.getPasswd().equals(EncryptUtil.getMD5(paswrod))) {
+						u.setPasswd(EncryptUtil.getMD5(paswrod));
 						if (userDao.upd(u)) {
 							a.setMsg("密码更新成功,建议注销重新登录,尝试新密码.");
 							a.setSuccess(true);
@@ -139,8 +139,8 @@ public class BusiCommonServiceImpl implements BusiCommonService {
 			User u = (User) obj;
 			User user = userDao.findById(u.getId());
 			if (user != null) {
-				if (!user.getUsername().equals(username)) {
-					user.setUsername(username);
+				if (!user.getNick().equals(username)) {
+					user.setNick(username);
 					if (userDao.upd(user)) {
 						a.setMsg("信息修改成功");
 						a.setSuccess(true);
@@ -157,10 +157,10 @@ public class BusiCommonServiceImpl implements BusiCommonService {
 		}
 		return a;
 	}
-
+/*
 	@Override
 	public List<User> findAllUsers() {
 		return userDao.findAllUsers();
-	}
+	}*/
 
 }

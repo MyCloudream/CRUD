@@ -67,11 +67,13 @@ public class RegistrarDaoImpl extends BaseDao<User> implements RegistrarDao{
 	@Override
 	public Map<String, Object> findRegistrarSearch(Map<String, Object> map, EasyUiPager easyUiPager) {
 		try {
-			/*
-			 * String select =
-			 * "select new Registrar(id,title,type,subdate,upddate) ";
-			 */
 			String Hql = " from User where roleid=2 ";
+			if (map.get("nick") != null) {
+				Hql += "and nick like '%" + map.get("nick") + "%' ";
+			}
+			if (map.get("mobile") != null) {
+				Hql += "and mobile like '%" + map.get("mobile") + "%' ";
+			}
 			String orderby = "";
 			if (easyUiPager.getOrderby() != null) {
 				orderby = " " + easyUiPager.getOrderby() + " ";

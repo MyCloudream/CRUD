@@ -25,10 +25,10 @@ public class LoginServiceImpl implements LoginService {
 	private RoleDao roleDao;
 
 	@Override
-	public Map<String, Object> loginUser(String name, String password) {
+	public Map<String, Object> loginUser(String mobile, String passwd) {
 		try {
 			Map<String, Object> map = new HashMap<String, Object>();
-			User u = userDao.loginUser(name, password);
+			User u = userDao.loginUser(mobile, passwd);
 			if (u != null) {
 				if (u.getStatus().equals("Y")) {
 					map.put("success", "Y");
