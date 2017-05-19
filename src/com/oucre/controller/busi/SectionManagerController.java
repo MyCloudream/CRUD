@@ -28,12 +28,10 @@ public class SectionManagerController {
 	public @ResponseBody
 	Map<String, Object> findSectionSearch(@RequestParam(value = "rows") Integer rows, @RequestParam(value = "page") Integer page, @RequestParam(value = "sort") String sort, @RequestParam(value = "order") String order, HttpServletRequest req) {
 		Map<String, Object> map = new HashMap<String, Object>();
-		if (ValidateUtil.neNull(req.getParameter("chid"))) {
-			map.put("chid", Integer.parseInt(req.getParameter("chid")));
+		if (ValidateUtil.neNull(req.getParameter("name"))) {
+			map.put("name", Integer.parseInt(req.getParameter("name")));
 		}
-		if (ValidateUtil.neNull(req.getParameter("type"))) {
-			map.put("type", Integer.parseInt(req.getParameter("type")));
-		}
+		System.out.println("------------------"+req.getParameter("name"));
 		return sectionService.findSectionSearch(map, new EasyUiPager(rows, page, sort, order));
 	}
 

@@ -72,6 +72,9 @@ public class ChapterDaoImpl extends BaseDao<Chapter> implements ChapterDao{
 			 * "select new Chapter(id,title,type,subdate,upddate) ";
 			 */
 			String Hql = " from Chapter where 1=1 ";
+			if (map.get("name") != null) {
+				Hql += "and name like '%" + map.get("name") + "%' ";
+			}
 			String orderby = "";
 			if (easyUiPager.getOrderby() != null) {
 				orderby = " " + easyUiPager.getOrderby() + " ";

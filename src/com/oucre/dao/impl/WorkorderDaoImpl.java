@@ -1,6 +1,7 @@
 package com.oucre.dao.impl;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,16 +11,16 @@ import org.springframework.stereotype.Repository;
 
 import com.oucre.core.dao.impl.BaseDao;
 import com.oucre.core.mode.search.EasyUiPager;
-import com.oucre.dao.SectionDao;
-import com.oucre.pojo.Section;
+import com.oucre.dao.WorkorderDao;
+import com.oucre.pojo.Workorder;
 
 @Repository
-public class SectionDaoImpl extends BaseDao<Section> implements SectionDao{
+public class WorkorderDaoImpl extends BaseDao<Workorder> implements WorkorderDao{
 
 	private Logger logger = Logger.getLogger(this.getClass());
 
 	@Override
-	public Integer add(Section entity) {
+	public Integer add(Workorder entity) {
 		try {
 			Serializable sz = super.saveEntity(entity);
 			if (sz != null) {
@@ -33,8 +34,9 @@ public class SectionDaoImpl extends BaseDao<Section> implements SectionDao{
 	}
 
 	@Override
-	public boolean upd(Section entity) {
+	public boolean upd(Workorder entity) {
 		try {
+			entity.setQtime(new Date());
 			super.updateEntity(entity);
 		} catch (Exception e) {
 			logger.error("dao–ﬁ∏ƒ¥ÌŒÛ", e);
@@ -46,7 +48,7 @@ public class SectionDaoImpl extends BaseDao<Section> implements SectionDao{
 	@Override
 	public boolean del(Integer id) {
 		try {
-			super.deleteEntity(new Section(id));
+			super.deleteEntity(new Workorder(id));
 			return true;
 		} catch (Exception e) {
 			logger.error("dao≤È’“¥ÌŒÛ", e);
@@ -55,9 +57,9 @@ public class SectionDaoImpl extends BaseDao<Section> implements SectionDao{
 	}
 
 	@Override
-	public Section findById(Integer id) {
+	public Workorder findById(Integer id) {
 		try {
-			return super.get(Section.class, id);
+			return super.get(Workorder.class, id);
 		} catch (Exception e) {
 			logger.error("dao≤È’“¥ÌŒÛ", e);
 			return null;
@@ -65,21 +67,25 @@ public class SectionDaoImpl extends BaseDao<Section> implements SectionDao{
 	}
 
 	@Override
-	public Map<String, Object> findSectionSearch(Map<String, Object> map, EasyUiPager easyUiPager) {
+	public Map<String, Object> findWorkorderSearch(Map<String, Object> map, EasyUiPager easyUiPager) {
 		try {
 			/*
 			 * String select =
-			 * "select new Section(id,title,type,subdate,upddate) ";
+			 * "select new Workorder(id,title,type,subdate,upddate) ";
 			 */
-			String Hql = " from Section where 1=1 ";
-			String orderby = "";
-			if (map.get("name") != null) {
-				Hql += " and name like '%" + map.get("name") +"%'";
+			String Hql = " from Workorder where 1=1 ";
+			if(map.get("answer")!=null){
+				if(map.get("answer").equals("null")){
+					Hql += " and answer is null";
+				}else{
+					Hql += "and answer like '%" + map.get("answer") +"%'";
+				}
 			}
+			String orderby = "";
 			if (easyUiPager.getOrderby() != null) {
 				orderby = " " + easyUiPager.getOrderby() + " ";
 			}
-			List<Section> list = super.findHqlByPager(/* select + */Hql + orderby, (easyUiPager.getPage() - 1) * easyUiPager.getRows(), easyUiPager.getRows());
+			List<Workorder> list = super.findHqlByPager(/* select + */Hql + orderby, (easyUiPager.getPage() - 1) * easyUiPager.getRows(), easyUiPager.getRows());
 			Hql = "select COUNT(*) " + Hql;
 			Integer total = super.findByHqlForPageCountEasyUi(Hql);
 			Map<String, Object> m = new HashMap<String, Object>();

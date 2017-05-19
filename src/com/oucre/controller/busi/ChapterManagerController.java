@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.oucre.core.mode.json.AjaxJson;
 import com.oucre.core.mode.search.EasyUiPager;
+import com.oucre.core.util.ValidateUtil;
 import com.oucre.pojo.Chapter;
 import com.oucre.service.ChapterService;
 
@@ -27,6 +28,10 @@ public class ChapterManagerController {
 	public @ResponseBody
 	Map<String, Object> findChapterSearch(@RequestParam(value = "rows") Integer rows, @RequestParam(value = "page") Integer page, @RequestParam(value = "sort") String sort, @RequestParam(value = "order") String order, HttpServletRequest req) {
 		Map<String, Object> map = new HashMap<String, Object>();
+		String name = req.getParameter("name");
+		if (ValidateUtil.neNull(name)) {
+			map.put("name", name);
+		}
 		return chapterService.findChapterSearch(map, new EasyUiPager(rows, page, sort, order));
 	}
 

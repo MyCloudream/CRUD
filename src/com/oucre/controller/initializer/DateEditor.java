@@ -15,7 +15,7 @@ public class DateEditor extends PropertiesEditor {
 			try {
 				if (text.indexOf(":") == -1 && text.length() == 10) {
 					setValue(this.dateFormat.parse(text));
-				} else if (text.indexOf(":") > 0 && text.length() == 19) {
+				} else if (text.indexOf(":") > 0 /*&& text.length() == 19*/) {
 					setValue(this.datetimeFormat.parse(text));
 				} else if (text.indexOf(":") > 0 && text.length() == 21) {
 					text = text.replace(".0", "");

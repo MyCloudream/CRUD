@@ -9,7 +9,14 @@
 	<div class="p">
 		<form id="ff" method="post">
 			<p>
-				<span class="spanr">标题:<input type="text" name="title">&nbsp;&nbsp;<a id="btn" onclick="btn()" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>&nbsp;&nbsp;<a id="btn" onclick="reload()" class="easyui-linkbutton" data-options="iconCls:'icon-reload'">重置 </a></span>
+				<span class="spanr">
+					小节名称:
+					<input type="text" name="name">
+					&nbsp;&nbsp;
+					<a id="btn" onclick="btn()" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>
+					&nbsp;&nbsp;
+					<a id="btn" onclick="reload()" class="easyui-linkbutton" data-options="iconCls:'icon-reload'">重置 </a>
+				</span>
 			</p>
 		</form>
 	</div>
@@ -23,9 +30,9 @@
 				url : "/busi/ChapterManager.do",
 				data : {
 					rows : 20,
-					page:1,
-					sort:"id",
-					order:"asc"
+					page : 1,
+					sort : "id",
+					order : "asc"
 				},
 				dataType : "json",
 				success : function(data) {
@@ -33,7 +40,7 @@
 				}
 			});
 		}
-	
+
 		var datagrid;
 		$(function() {
 			getAllChapters();
@@ -73,13 +80,13 @@
 					width : 300,
 					sortable : true,
 					formatter : function(value, row, index) {
-						if(value==1){
+						if (value == 1) {
 							return "视频";
-						}else if(value==2){
+						} else if (value == 2) {
 							return "练习";
-						}else if(value==3){
+						} else if (value == 3) {
 							return "形式考试";
-						}else if(value==4){
+						} else if (value == 4) {
 							return "项目考试";
 						}
 					}
@@ -88,7 +95,7 @@
 					title : '小节序号',
 					width : 200,
 					sortable : true
-				}] ],
+				} ] ],
 				toolbar : ".p",
 				onRowContextMenu : function(e, rowIndex, rowData) { // 右击事件
 					e.preventDefault(); // 阻止浏览器自带的右键菜单弹出
@@ -101,7 +108,7 @@
 		});
 		function btn() {
 			datagrid.datagrid("load", {
-				title : ff.find('[name="title"]').val(),
+				name : ff.find('[name="name"]').val(),
 			});
 		}
 		function reload() {
@@ -109,11 +116,13 @@
 			btn();
 		}
 		function SectionManagerAdd() {
-			addobj(gb("SectionManagerAdd").name, gb("SectionManagerAdd").link, 700, 400);
+			addobj(gb("SectionManagerAdd").name, gb("SectionManagerAdd").link,
+					700, 400);
 		}
 
 		function SectionManagerUpd() {
-			updateobj(gb("SectionManagerUpd").name, gb("SectionManagerUpd").link, 700, 400);
+			updateobj(gb("SectionManagerUpd").name,
+					gb("SectionManagerUpd").link, 700, 400);
 		}
 		function SectionManagerDel() {
 			delobj("/busi/SectionManagerDel.do");
