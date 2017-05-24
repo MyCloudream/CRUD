@@ -35,7 +35,7 @@ body {
 }
 </style>
 <script type="text/javascript">
-	$(function() {
+	/* $(function() {
 		$.ajax({
 			type : "POST",
 			url : "/busi/MaterialTypeManager.do",
@@ -55,7 +55,7 @@ body {
 				$("#type").append(str);
 			}
 		});
-	});
+	}); */
 
 	// 下拉列表选中事件  二级联动
 	function typeChange(osel) {
@@ -201,7 +201,78 @@ body {
 		//实例化编辑器
 		//建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
 		var ue = UE.getEditor('editor');
+		var win = frameElement.api.opener;
+		var formdata = win.datagrids;
 		$(function() {
+			$("#name").val(formdata[0].name);
+			$("#no").val(formdata[0].no);
+			// 设置素材类型
+			$.ajax({
+				type : "POST",
+				url : "/busi/MaterialTypeManager.do",
+				data : {
+					rows : 20, // 获取所有的素材类型
+					page : 1,
+					sort : "id",
+					order : "asc"
+				},
+				dataType : "json",
+				success : function(data) {
+					var str = "";
+					for (var i = 0; i < data.rows.length; i++) {
+						str += "<option value=\""+data.rows[i].id+"\">"
+								+ data.rows[i].name + "</option>";
+					}
+					$("#type").append(str);
+					$(
+							"select[name='type'] option[value='"
+									+ formdata[0].type + "']").attr("selected",
+							true);
+				}
+			});
+
+			// 设置素材规格
+			var tid = formdata[0].type;
+			$.ajax({
+				type : "POST",
+				url : "/busi/MaterialSuffixManager.do",
+				data : {
+					rows : 200, // 获取所有的素材规格
+					page : 1,
+					sort : "id",
+					order : "asc",
+					tid : tid
+				},
+				dataType : "json",
+				success : function(data) {
+					var str = "";
+					for (var i = 0; i < data.rows.length; i++) {
+						str += "<option value=\""+data.rows[i].id+"\">"
+								+ data.rows[i].name + "</option>";
+					}
+					$("#suffix").append(str);
+					$(
+							"select[name='suffix'] option[value='"
+									+ formdata[0].suffix + "']").attr(
+							"selected", true);
+				}
+			});
+
+			$(
+					"select[name='animation'] option[value='"
+							+ formdata[0].animation + "']").attr("selected",
+					true);
+			$("#size").val(formdata[0].size);
+			$("#price").val(formdata[0].price);
+			$("#bean").val(formdata[0].bean);
+			$("#url").val(formdata[0].url);
+			$("#passwd").val(formdata[0].passwd);
+			$("#mdesc").val(formdata[0].mdesc);
+			//判断ueditor 编辑器是否创建成功
+			ue.addListener("ready", function() {
+				// editor准备好之后才可以使用
+				ue.setContent(formdata[0].content);
+			});
 			$("#btn_sub").click(
 					function() {
 						var name = $("#name").val();
@@ -227,8 +298,9 @@ body {
 						}
 						$.ajax({
 							type : "POST",
-							url : "/busi/MaterialManagerAdd.do",
+							url : "/busi/MaterialManagerUpd.do",
 							data : {
+								id : formdata[0].id,
 								name : name,
 								no : no,
 								type : type,

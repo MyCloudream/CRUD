@@ -93,12 +93,12 @@
 					title : '下载密码',
 					width : 50,
 					sortable : true
-				}, {
+				}/* , {
 					field : 'content',
 					title : '详情',
 					width : 300,
 					sortable : true
-				} ] ],
+				}  */] ],
 				toolbar : ".p",
 				onRowContextMenu : function(e, rowIndex, rowData) { // 右击事件
 					e.preventDefault(); // 阻止浏览器自带的右键菜单弹出

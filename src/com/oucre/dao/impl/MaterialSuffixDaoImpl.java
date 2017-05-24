@@ -75,6 +75,9 @@ public class MaterialSuffixDaoImpl extends BaseDao<MaterialSuffix> implements Ma
 			if (map.get("name") != null) {
 				Hql += " and name like '%" + map.get("name") + "%' ";
 			}
+			if (map.get("tid") != null) {
+				Hql += " and tid = " + map.get("tid");
+			}
 			if (easyUiPager.getOrderby() != null) {
 				orderby = " " + easyUiPager.getOrderby() + " ";
 			}

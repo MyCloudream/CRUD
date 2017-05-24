@@ -31,6 +31,9 @@ public class MaterialSuffixManagerController {
 		if (ValidateUtil.neNull(req.getParameter("name"))) {
 			map.put("name", req.getParameter("name"));
 		}
+		if (ValidateUtil.neNull(req.getParameter("tid"))) {
+			map.put("tid", req.getParameter("tid"));
+		}
 		return materialSuffixService.findMaterialSuffixSearch(map, new EasyUiPager(rows, page, sort, order));
 	}
 

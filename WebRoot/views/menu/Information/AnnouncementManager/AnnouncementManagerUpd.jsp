@@ -20,71 +20,92 @@ body {
 </head>
 <body>
 	<div>
-		<div style="width: 100%;height: 30px;line-height: 30px">
-			<span><font style="font-weight: bold;">文章标题:</font><input type="text" name="title" id="title" style="height: 26px;"></span><span></span>
+		<div style="width: 100%; height: 30px; line-height: 30px">
+			<span>
+				<font style="font-weight: bold;">文章标题:</font>
+				<input type="text" name="title" id="title" style="height: 26px;">
+			</span>
+			<span></span>
 		</div>
-		<div style="width:100%;height:460px;">
+		<div style="width: 100%; height: 460px;">
 			<script id="editor" type="text/plain" style="width:980px;;height:450px;"></script>
 		</div>
 	</div>
-	<span class="thidden"><input type="button" id="btn_sub"></span>
+	<span class="thidden">
+		<input type="button" id="btn_sub">
+	</span>
 	<script type="text/javascript">
 		//实例化编辑器
 		//建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
 		var ue = UE.getEditor('editor');
 		var win = frameElement.api.opener;
 		var formdata = win.datagrids;
-		$(document).ready(function() {
-			//判断ueditor 编辑器是否创建成功
-			ue.addListener("ready", function() {
-				// editor准备好之后才可以使用
-				ue.setContent(formdata[0].content);
-			});
-			$("#title").val(formdata[0].title);
-			$("#btn_sub").click(function() {
-				var title = $("#title").val();
-				var hasContents = ue.hasContents();
-				if (formdata[0].id == '' || formdata[0].id == undefined) {
-					alert("出现问题请关闭页面重新打开");
-					return;
-				}
-				if (title == '' || title == undefined) {
-					alert("标题不能为空");
-					return;
-				}
-				if (hasContents != true) {
-					alert("内容不能为空");
-					return;
-				}
-				$.ajax({
-					type : "POST",
-					url : "/busi/AnnouncementManagerUpd.do",
-					data : {
-						id : formdata[0].id,
-						type : formdata[0].type,
-						subdate : formdata[0].subdate,
-						title : title,
-						content : ue.getContent()
-					},
-					dataType : "json",
-					success : function(data) {
-						if (data.success == true) {
-							frameElement.api.close();
-							win.tip(data.msg);
-						} else {
-							if (data.responseText == '' || data.responseText == undefined) {
-								alert(data.responseText);
-							} else {
-								alert(data.msg);
-							}
-							frameElement.api.close();
-							return false;
-						}
-						win.reloadTable();
-					}
-				});
-			});
-		});
+		$(document)
+				.ready(
+						function() {
+							//判断ueditor 编辑器是否创建成功
+							ue.addListener("ready", function() {
+								// editor准备好之后才可以使用
+								ue.setContent(formdata[0].content);
+							});
+							$("#title").val(formdata[0].title);
+							$("#btn_sub")
+									.click(
+											function() {
+												var title = $("#title").val();
+												var hasContents = ue
+														.hasContents();
+												if (formdata[0].id == ''
+														|| formdata[0].id == undefined) {
+													alert("出现问题请关闭页面重新打开");
+													return;
+												}
+												if (title == ''
+														|| title == undefined) {
+													alert("标题不能为空");
+													return;
+												}
+												if (hasContents != true) {
+													alert("内容不能为空");
+													return;
+												}
+												$
+														.ajax({
+															type : "POST",
+															url : "/busi/AnnouncementManagerUpd.do",
+															data : {
+																id : formdata[0].id,
+																type : formdata[0].type,
+																subdate : formdata[0].subdate,
+																title : title,
+																content : ue
+																		.getContent()
+															},
+															dataType : "json",
+															success : function(
+																	data) {
+																if (data.success == true) {
+																	frameElement.api
+																			.close();
+																	win
+																			.tip(data.msg);
+																} else {
+																	if (data.responseText == ''
+																			|| data.responseText == undefined) {
+																		alert(data.responseText);
+																	} else {
+																		alert(data.msg);
+																	}
+																	frameElement.api
+																			.close();
+																	return false;
+																}
+																win
+																		.reloadTable();
+															}
+														});
+											});
+						});
 	</script>
 </body>
 </html>
