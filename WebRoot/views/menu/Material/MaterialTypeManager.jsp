@@ -26,7 +26,7 @@
 		var datagrid;
 		$(function() {
 			datagrid = $("#tt").datagrid({
-				url : '/busi/MaterialManager.do',
+				url : '/busi/MaterialTypeManager.do',
 				/* 	fitColumns : true,//设置为true将自动使列适应表格宽度以防止出现水平滚动 */
 				pagination : true,// 分页控件
 				pageSize : 10,//默认显示大小
@@ -46,57 +46,6 @@
 					field : 'no',
 					title : '编号',
 					width : 150,
-					sortable : true
-				}, {
-					field : 'size',
-					title : '大小',
-					width : 50,
-					sortable : true
-
-				}, {
-					field : 'suffix',
-					title : '格式',
-					width : 100,
-					sortable : true
-				}, {
-					field : 'type',
-					title : '类型',
-					width : 100,
-					sortable : true
-				}, {
-					field : 'standard',
-					title : '规格',
-					width : 100,
-					sortable : true
-				}, {
-					field : 'animation',
-					title : '动作动画',
-					width : 50,
-					sortable : true
-				}, {
-					field : 'price',
-					title : '价格',
-					width : 50,
-					sortable : true
-				}, {
-					field : 'bean',
-					title : '金豆数',
-					width : 50,
-					sortable : true
-				}, {
-					field : 'url',
-					title : '下载地址',
-					width : 200,
-					sortable : true
-				}, {
-					field : 'passwd',
-					title : '下载密码',
-					width : 50,
-					sortable : true
-				}, {
-					field : 'content',
-					title : '详情',
-					width : 300,
 					sortable : true
 				} ] ],
 				toolbar : ".p",
@@ -118,20 +67,20 @@
 			ff[0].reset();
 			btn();
 		}
-		function MaterialManagerAdd() {
-			addobj(gb("MaterialManagerAdd").name,
-					gb("MaterialManagerAdd").link, 1000, 600);
+		function MaterialTypeManagerAdd() {
+			addobj(gb("MaterialTypeManagerAdd").name,
+					gb("MaterialTypeManagerAdd").link, 600, 400);
 		}
 
-		function MaterialManagerUpd() {
-			updateobj(gb("MaterialManagerUpd").name,
-					gb("MaterialManagerUpd").link, 1000, 600);
+		function MaterialTypeManagerUpd() {
+			updateobj(gb("MaterialTypeManagerUpd").name,
+					gb("MaterialTypeManagerUpd").link, 600, 400);
 		}
-		function MaterialManagerDel() {
-			delobj("/busi/MaterialManagerDel.do");
+		function MaterialTypeManagerDel() {
+			delobj("/busi/MaterialTypeManagerDel.do");
 		}
-		function MaterialManagerSearch() {
-			MaterialManagerSearch
+		function MaterialTypeManagerSearch() {
+			MaterialTypeManagerSearch
 		}
 	</script>
 </body>

@@ -8,6 +8,4 @@ import com.oucre.pojo.Material;
 
 public interface MaterialDao extends BaseDao<Material> {
 	public Map<String, Object> findMaterialSearch(Map<String, Object> map, EasyUiPager easyUiPager);
-
-	public Material findMaterialTopOne();
 }

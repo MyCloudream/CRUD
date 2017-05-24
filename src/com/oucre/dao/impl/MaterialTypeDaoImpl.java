@@ -10,15 +10,15 @@ import org.springframework.stereotype.Repository;
 
 import com.oucre.core.dao.impl.BaseDao;
 import com.oucre.core.mode.search.EasyUiPager;
-import com.oucre.dao.MaterialDao;
-import com.oucre.pojo.Material;
+import com.oucre.dao.MaterialTypeDao;
+import com.oucre.pojo.MaterialType;
 
 @Repository
-public class MaterialDaoImpl extends BaseDao<Material> implements MaterialDao {
+public class MaterialTypeDaoImpl extends BaseDao<MaterialType> implements MaterialTypeDao {
 	private Logger logger = Logger.getLogger(this.getClass());
 
 	@Override
-	public Integer add(Material entity) {
+	public Integer add(MaterialType entity) {
 		try {
 			Serializable sz = super.saveEntity(entity);
 			if (sz != null) {
@@ -32,7 +32,7 @@ public class MaterialDaoImpl extends BaseDao<Material> implements MaterialDao {
 	}
 
 	@Override
-	public boolean upd(Material entity) {
+	public boolean upd(MaterialType entity) {
 		try {
 			super.updateEntity(entity);
 		} catch (Exception e) {
@@ -45,7 +45,7 @@ public class MaterialDaoImpl extends BaseDao<Material> implements MaterialDao {
 	@Override
 	public boolean del(Integer id) {
 		try {
-			super.deleteEntity(new Material(id));
+			super.deleteEntity(new MaterialType(id));
 			return true;
 		} catch (Exception e) {
 			logger.error("dao查找错误", e);
@@ -54,9 +54,9 @@ public class MaterialDaoImpl extends BaseDao<Material> implements MaterialDao {
 	}
 
 	@Override
-	public Material findById(Integer id) {
+	public MaterialType findById(Integer id) {
 		try {
-			return super.get(Material.class, id);
+			return super.get(MaterialType.class, id);
 		} catch (Exception e) {
 			logger.error("dao查找错误", e);
 			return null;
@@ -64,22 +64,24 @@ public class MaterialDaoImpl extends BaseDao<Material> implements MaterialDao {
 	}
 
 	@Override
-	public Map<String, Object> findMaterialSearch(Map<String, Object> map, EasyUiPager easyUiPager) {
+	public Map<String, Object> findMaterialTypeSearch(Map<String, Object> map, EasyUiPager easyUiPager) {
 		try {
 			/*
 			 * String select =
-			 * "select new Material(id,title,type,subdate,upddate) ";
+			 * "select new MaterialType(id,title,type,subdate,upddate) ";
 			 */
-			String Hql = " from Material where 1=1 ";
+			String Hql = " from MaterialType where 1=1 ";
 			String orderby = "";
 			if (map.get("name") != null) {
-				Hql += " and name like '" + map.get("name") + "%' ";
+				Hql += " and name like '%" + map.get("name") + "%' ";
 			}
 			if (easyUiPager.getOrderby() != null) {
 				orderby = " " + easyUiPager.getOrderby() + " ";
 			}
-			List<Material> list = super.findHqlByPager(/* select + */Hql + orderby, (easyUiPager.getPage() - 1) * easyUiPager.getRows(), easyUiPager.getRows());
+			List<MaterialType> list = super.findHqlByPager(/* select + */Hql + orderby, (easyUiPager.getPage() - 1) * easyUiPager.getRows(), easyUiPager.getRows());
 			Hql = "select COUNT(*) " + Hql;
+			// 英文数据库中的表名叫material_type
+			Hql = Hql.replace("MaterialType", "material_type");
 			Integer total = super.findByHqlForPageCountEasyUi(Hql);
 			Map<String, Object> m = new HashMap<String, Object>();
 			m.put("rows", list);

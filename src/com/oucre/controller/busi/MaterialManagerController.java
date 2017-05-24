@@ -28,8 +28,8 @@ public class MaterialManagerController {
 	public @ResponseBody
 	Map<String, Object> findMaterialSearch(@RequestParam(value = "rows") Integer rows, @RequestParam(value = "page") Integer page, @RequestParam(value = "sort") String sort, @RequestParam(value = "order") String order, HttpServletRequest req) {
 		Map<String, Object> map = new HashMap<String, Object>();
-		if (ValidateUtil.neNull(req.getParameter("title"))) {
-			map.put("title", req.getParameter("title"));
+		if (ValidateUtil.neNull(req.getParameter("name"))) {
+			map.put("name", req.getParameter("name"));
 		}
 		return materialService.findMaterialSearch(map, new EasyUiPager(rows, page, sort, order));
 	}

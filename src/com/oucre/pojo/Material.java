@@ -2,6 +2,8 @@ package com.oucre.pojo;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "material", catalog = "uoumomteaching")
-public class Material {
+public class Material implements Serializable{
 	private Integer id;
 	private String name;
 	private String no;
@@ -52,6 +54,7 @@ public class Material {
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "id", unique = true, nullable = false)
 	public Integer getId() {
 		return id;
 	}
