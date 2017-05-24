@@ -39,7 +39,7 @@
 		var datagrid;
 		$(function() {
 			datagrid = $("#tt").datagrid({
-				url : '/busi/ProjecttrainingExamManager.do',
+				url : '/busi/ProjectScoreManager.do',
 				/* 	fitColumns : true,//设置为true将自动使列适应表格宽度以防止出现水平滚动 */
 				pagination : true,// 分页控件
 				pageSize : 20,//默认显示大小
@@ -60,6 +60,17 @@
 					title : '学生联系方式',
 					width : 120,
 					sortable : true
+				}, {
+					field : 'score',
+					title : '学生分数',
+					width : 120,
+					sortable : true,
+					formatter : function(value, row, index) {
+						if(value==0 || value=='' || value==null){
+							return "未判分";
+						}
+						return value;
+					}
 				}, {
 					field : 'stime',
 					title : '学生提问时间',
@@ -98,9 +109,9 @@
 			ff[0].reset();
 			btn();
 		}
-		function ProjecttrainingExamManagerUpd() {
-			updateobj(gb("ProjecttrainingExamManagerUpd").name,
-					gb("ProjecttrainingExamManagerUpd").link, "1000", "600");
+		function ProjectScoreManagerUpd() {
+			updateobj(gb("ProjectScoreManagerUpd").name,
+					gb("ProjectScoreManagerUpd").link, "1000", "600");
 		}
 	</script>
 </body>

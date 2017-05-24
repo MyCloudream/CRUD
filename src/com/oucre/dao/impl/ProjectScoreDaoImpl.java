@@ -3,30 +3,60 @@ package com.oucre.dao.impl;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
+import org.hibernate.Transaction;
 import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
 
 import com.oucre.core.dao.impl.BaseDao;
 import com.oucre.core.entity.StudentProjectScore;
 import com.oucre.core.mode.search.EasyUiPager;
-import com.oucre.dao.StudentDao;
-import com.oucre.pojo.Student;
+import com.oucre.dao.ProjectScoreDao;
+import com.oucre.pojo.Score;
 
 @Repository
-public class StudentDaoImpl extends BaseDao<Student> implements StudentDao{
+public class ProjectScoreDaoImpl extends BaseDao<Score> implements ProjectScoreDao{
 
+	private Logger logger = Logger.getLogger(this.getClass());
+	
+	/**
+	 * 执行原生sql语句更新单个字段
+	 * @param sql
+	 * @return
+	 */
+	public boolean updateEntityBySql(Integer score,Integer id){
+		try {
+			String sql = "update score set score = "+score +" where id = "+id;
+			SQLQuery query=getSession().createSQLQuery(sql);
+			int n = query.executeUpdate(); 
+			return n==1;
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error("dao修改错误", e);
+			return false;
+		}
+	}
+	
 	@Override
-	public Integer add(Student entity) {
+	public Integer add(Score entity) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean upd(Student entity) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean upd(Score entity) {
+		try {
+			super.updateEntity(entity);
+		} catch (Exception e) {
+			logger.error("dao修改错误", e);
+			return false;
+		}
+		return true;
 	}
+	
+	
 
 	@Override
 	public boolean del(Integer id) {
@@ -35,7 +65,7 @@ public class StudentDaoImpl extends BaseDao<Student> implements StudentDao{
 	}
 
 	@Override
-	public Student findById(Integer id) {
+	public Score findById(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

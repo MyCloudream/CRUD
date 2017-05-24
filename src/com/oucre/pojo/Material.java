@@ -17,8 +17,8 @@ public class Material implements Serializable{
 	private String name;
 	private String no;
 	private Double size;
-	private String suffix;
-	private String type;
+	private Integer type;
+	private Integer suffix;
 	private String animation;
 	private Double price;
 	private Integer bean;
@@ -34,7 +34,7 @@ public class Material implements Serializable{
 		this.id = id;
 	}
 
-	public Material(Integer id, String name, String no, Double size, String suffix, String type,
+	public Material(Integer id, String name, String no, Double size, Integer type, Integer suffix,
 			String animation, Double price, Integer bean, String url, String passwd, String mdesc,String content) {
 		super();
 		this.id = id;
@@ -90,21 +90,21 @@ public class Material implements Serializable{
 		this.size = size;
 	}
 
-	@Column(name = "suffix", length = 15)
-	public String getSuffix() {
+	@Column(name = "suffix")
+	public Integer getSuffix() {
 		return suffix;
 	}
 
-	public void setSuffix(String suffix) {
+	public void setSuffix(Integer suffix) {
 		this.suffix = suffix;
 	}
 
-	@Column(name = "type", length = 10)
-	public String getType() {
+	@Column(name = "type")
+	public Integer getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(Integer type) {
 		this.type = type;
 	}
 

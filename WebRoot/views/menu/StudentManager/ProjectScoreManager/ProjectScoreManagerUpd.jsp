@@ -23,7 +23,12 @@
 		valform("mobile", formdata[0].mobile, "");
 		valform("content", formdata[0].content, "textarea");
 		valform("score", formdata[0].score, "");
-		valform("url",formdata[0].url,"");
+		// 给下载地址赋值
+		if(formdata[0].url.indexOf("http")!=-1){
+			$('#url').attr('href',formdata[0].url); 
+		}else{
+			$('#url').attr('href','http://'+formdata[0].url); 
+		}
 		valform("stime", getLocalTime(formdata[0].stime), "");
 	});
 
@@ -41,7 +46,7 @@
 </script>
 </head>
 <body>
-	<form class="formobj" method="post" action="/busi/ProjecttrainingExamManagerUpd.do">
+	<form class="formobj" method="post" action="/busi/ProjectScoreManagerUpd.do">
 		<table class="vtb">
 			<tr>
 				<th>
@@ -76,7 +81,7 @@
 					分数
 				</th>
 				<td>
-					<input type="text" name="answer" cols="100" rows="15" style="width: 90%;"></textarea>
+					<input type="text" name="score" cols="100" rows="15" style="width: 90%;"></textarea>
 				</td>
 			</tr>
 			<tr>
@@ -85,7 +90,8 @@
 					学生项目地址：
 				</th>
 				<td>
-					<input type="text" name="url" readonly="readonly" style="width: 90%;">
+					<!-- <input type="text" name="url" readonly="readonly" style="width: 90%;"> -->
+					<a id="url" href="http://www.baidu.com" target="_blank">点击下载学生项目</a>
 				</td>
 			</tr>
 			<tr>
