@@ -73,9 +73,9 @@ public class BusiCommonController {
 
 	@RequestMapping(value = "/UserUpd.do")
 	public @ResponseBody
-	AjaxJson UserUpd(@RequestParam(value = "username") String username, HttpServletRequest req) {
+	AjaxJson UserUpd(@RequestParam(value = "nick") String nick, HttpServletRequest req) {
 		AjaxJson a = new AjaxJson();
-		a = commonService.updUser(username, req.getSession().getAttribute("user_info"));
+		a = commonService.updUser(nick, req.getSession().getAttribute("user_info"));
 		if (a.isSuccess()) {
 			req.getSession().setAttribute("user_info", (User) a.getObj());
 		}

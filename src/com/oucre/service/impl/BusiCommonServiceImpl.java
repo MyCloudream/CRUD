@@ -133,14 +133,14 @@ public class BusiCommonServiceImpl implements BusiCommonService {
 	}
 
 	@Override
-	public AjaxJson updUser(String username, Object obj) {
+	public AjaxJson updUser(String nick, Object obj) {
 		AjaxJson a = new AjaxJson();
 		if (obj != null) {
 			User u = (User) obj;
 			User user = userDao.findById(u.getId());
 			if (user != null) {
-				if (!user.getNick().equals(username)) {
-					user.setNick(username);
+				if (!user.getNick().equals(nick)) {
+					user.setNick(nick);
 					if (userDao.upd(user)) {
 						a.setMsg("信息修改成功");
 						a.setSuccess(true);
