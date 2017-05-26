@@ -3,6 +3,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
+<link href="<%=path%>/plug-in/uploadify/css/uploadify.css" type="text/css" rel="stylesheet" />
 <script type="text/javascript" src="<%=path%>/plug-in/jquery/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="<%=path%>/plug-in/ueditor1_4_3_3-utf8-jsp/ueditor.config.js"></script>
 <script type="text/javascript" charset="utf-8" src="<%=path%>/plug-in/ueditor1_4_3_3-utf8-jsp/ueditor.all.min.js"></script>
@@ -11,7 +12,7 @@
 <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
 <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
 <script type="text/javascript" charset="utf-8" src="<%=path%>/plug-in/ueditor1_4_3_3-utf8-jsp/lang/zh-cn/zh-cn.js"></script>
-
+<script type="text/javascript" src="<%=path%>/plug-in/uploadify/jquery.uploadify-3.1.js"></script>
 <style type="text/css">
 body {
 	margin: 0px;
@@ -27,6 +28,10 @@ body {
 }
 
 .vtb tr td input[type="text"] {
+	width: 280px;
+}
+
+.vtb tr td select {
 	width: 280px;
 }
 
@@ -85,7 +90,24 @@ body {
 </script>
 </head>
 <body>
+	<p class="pimg">
+		
+	</p>
+	<p class="pfoot">
+		
+	</p>
+
 	<table class="vtb">
+		<tr>
+			<th>首图片上传</th>
+			<td>
+				<input type="file" name="uploads" id="file_upload_1" style="margin: 0px; padding: 0px;" />
+			</td>
+			<th>首图片地址</th>
+			<td>
+				<input type="text" name="img" id="img">
+			</td>
+		</tr>
 		<tr>
 			<th>
 				<span class="t_t">*</span>
@@ -96,10 +118,10 @@ body {
 			</td>
 			<th>
 				<span class="t_t">*</span>
-				编号:
+				资源定价:
 			</th>
 			<td>
-				<input type="text" name="no" id="no">
+				<input type="text" name="price" id="price">
 			</td>
 		</tr>
 		<tr>
@@ -144,22 +166,6 @@ body {
 		<tr>
 			<th>
 				<span class="t_t">*</span>
-				资源定价:
-			</th>
-			<td>
-				<input type="text" name="price" id="price">
-			</td>
-			<th>
-				<span class="t_t">*</span>
-				金豆（颗）:
-			</th>
-			<td>
-				<input type="text" name="bean" id="bean">
-			</td>
-		</tr>
-		<tr>
-			<th>
-				<span class="t_t">*</span>
 				云盘地址:
 			</th>
 			<td>
@@ -179,11 +185,10 @@ body {
 		<tr>
 			<th>
 				<span class="t_t">*</span>
-				备注说明:
+				备注说明(200字以内):
 			</th>
 			<td>
 				<textarea id="mdesc" name="mdesc" cols="120" rows="3"></textarea>
-				<span>200字以内</span>
 			</td>
 		</tr>
 	</table>
@@ -202,6 +207,32 @@ body {
 		//建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
 		var ue = UE.getEditor('editor');
 		$(function() {
+			// 上传素材首页图片
+			$("#file_upload_1").uploadify({
+				height        : 25,
+				width         : 50,
+				swf           : '<%=path%>/plug-in/uploadify/uploadify.swf',
+				uploader      : '<%=path%>/common/upload.do',
+				'buttonText' : '上传图片',
+				'fileTypeDesc' : 'Image Files',
+				'fileTypeExts' : '*.gif; *.jpg; *.png',
+				'fileObjName' : 'file',
+				'fileSizeLimit' : '10000KB',
+				 multi : false,
+				'onUploadSuccess' : function(file, data, response) {
+					var json = eval('(' + data + ')');
+					if (json.success) {
+						$("#img").val(json.obj);
+						// $("#pic1").val(json.obj[1]);
+					} else {
+						alert(json.msg);
+					}
+				}
+			});
+			
+			
+			
+			// 提交素材属性
 			$("#btn_sub").click(
 					function() {
 						var name = $("#name").val();
@@ -215,9 +246,10 @@ body {
 						var url = $("#url").val();
 						var passwd = $("#passwd").val();
 						var mdesc = $("#mdesc").val();
+						var img = $("#img").val();
 						var hasContents = ue.hasContents();
 						if (name == '' || name == undefined) {
-							alert("标题不能为空");
+							alert("名称不能为空");
 							return;
 						}
 						// 这里后续添加其他项的验证
@@ -240,7 +272,8 @@ body {
 								url : url,
 								passwd : passwd,
 								mdesc : mdesc,
-								content : ue.getContent()
+								content : ue.getContent(),
+								img:img
 							},
 							dataType : "json",
 							success : function(data) {

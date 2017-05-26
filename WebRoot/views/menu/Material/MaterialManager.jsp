@@ -42,12 +42,7 @@
 					title : '名称',
 					width : 200,
 					sortable : true
-				}, {
-					field : 'no',
-					title : '编号',
-					width : 150,
-					sortable : true
-				}, {
+				},{
 					field : 'size',
 					title : '大小',
 					width : 50,

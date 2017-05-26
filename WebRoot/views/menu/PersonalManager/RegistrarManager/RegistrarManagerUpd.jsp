@@ -41,7 +41,7 @@
 			<tr>
 				<th><span class="t_t">*</span>密码:</th>
 				<td>
-					<input type="password" name="passwd" datatype=*6-16	errormsg="请输入正确的密码" nullmsg="请填写信息！" style="width:70%;">
+					<input type="password" name="passwd" datatype=*6-32	errormsg="请输入正确的密码" nullmsg="请填写信息！" style="width:70%;">
 					<span class="Validform_checktip">6-16位密码</span>
 				</td>
 			</tr>

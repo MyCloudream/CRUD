@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.oucre.core.mode.json.AjaxJson;
 import com.oucre.core.mode.search.EasyUiPager;
+import com.oucre.core.util.EncryptUtil;
 import com.oucre.core.util.ValidateUtil;
 import com.oucre.pojo.User;
 import com.oucre.service.RegistrarService;
@@ -48,6 +49,7 @@ public class RegistrarManagerController {
 	@RequestMapping(value = "/RegistrarManagerUpd.do")
 	public @ResponseBody
 	AjaxJson updRegistrarManager(@ModelAttribute User entity) {
+		entity.setPasswd(EncryptUtil.getMD5(entity.getPasswd()));
 		return registrarService.updRegistrarManager(entity);
 	}
 

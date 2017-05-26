@@ -48,7 +48,7 @@
 				</select><span class="Validform_checktip"></span></td>
 			</tr>
 			<tr>
-				<th><span class="t_t">*</span>课程笔记:</th>
+				<th><span class="t_t">*</span>项目考题:</th>
 				<td><textarea name="content" cols="100" rows="25" datatype=*2-50000 errormsg="请输入正确的课程笔记内容" nullmsg="请填写信息！"></textarea>
 				<br/><span class="Validform_checktip">本小节课程笔记</span></td>
 			</tr>

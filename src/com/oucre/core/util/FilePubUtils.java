@@ -29,7 +29,7 @@ public class FilePubUtils {
 	 */
 	public final static byte[] buffer = new byte[1024];
 
-	private static String DiskPath = "E://file/";
+	private static String DiskPath = "C://file/";
 
 	/**
 	 * 文件上传
@@ -39,7 +39,6 @@ public class FilePubUtils {
 	 * @param name
 	 * @param size
 	 */
-
 	public static AjaxJson uploadMultipartFile(MultipartFile file, String path,
 			String name, Integer size) {
 		try {
@@ -67,10 +66,18 @@ public class FilePubUtils {
 				f.mkdirs();
 			}
 			file.transferTo(f);
-			String[] str = new String[2];
+			// 上传七牛云
+			String key = QiniuHelper.UploadFile(f);
+			String imgUrl =  QiniuHelper.GetUrl(key);
+			
+			// 删除服务器本地图片
+			if(f.exists()){
+				f.delete();
+			}
+			/*String[] str = new String[2];
 			str[0] = path;
-			str[1] = tname;
-			return new AjaxJson(true, "操作成功", str);
+			str[1] = tname;*/
+			return new AjaxJson(true, "操作成功", imgUrl);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new AjaxJson(false, "出现异常");

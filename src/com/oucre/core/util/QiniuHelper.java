@@ -45,7 +45,6 @@ public class QiniuHelper {
     		Configuration cfg = new Configuration(Zone.zone0());
 	    	//创建上传对象
 	    	UploadManager uploadManager = new UploadManager(cfg);
-	    	System.out.println("-----------"+ACCESS_KEY+"##"+SECRET_KEY+"------------");
 	    	//密钥配置
 	    	Auth auth = Auth.create(ACCESS_KEY, SECRET_KEY);
 	    	

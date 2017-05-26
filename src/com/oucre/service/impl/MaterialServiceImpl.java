@@ -1,5 +1,6 @@
 package com.oucre.service.impl;
 
+import java.util.Date;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,9 @@ public class MaterialServiceImpl implements MaterialService {
 
 	@Override
 	public AjaxJson addMaterial(Material entity) {
+		// 金豆为金额数量*100
+		entity.setBean((int) (entity.getPrice()*100));
+		entity.setMtime(new Date());
 		AjaxJson a = new AjaxJson();
 		if (materialDao.add(entity) > 0) {
 			a.setSuccess(true);
@@ -30,6 +34,9 @@ public class MaterialServiceImpl implements MaterialService {
 
 	@Override
 	public AjaxJson updMaterial(Material entity) {
+		// 金豆为金额数量*100
+		entity.setBean((int) (entity.getPrice()*100));
+		entity.setMtime(new Date());
 		AjaxJson a = new AjaxJson();
 		if (materialDao.upd(entity)) {
 			a.setSuccess(true);
