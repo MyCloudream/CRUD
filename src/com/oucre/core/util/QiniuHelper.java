@@ -19,19 +19,19 @@ public class QiniuHelper {
     /**
      * 空间名
      */
-    private static String Scope = "cloudream";
+    private static String Scope = PropertiesUtil.getProperties("C:/qiniu.properties", "Scope");
     
     /**
      * 域名
      */
-    private static String Url = "7xtc8l.com1.z0.glb.clouddn.com";
+    private static String Url = PropertiesUtil.getProperties("C:/qiniu.properties", "Url");
     
     /**
      * 公钥
      */
-    private static String ACCESS_KEY = "uHUWG9003TUUnD_VC7SzwEp3GdvGv32TrjHgyhwU";
+    private static String ACCESS_KEY = PropertiesUtil.getProperties("C:/qiniu.properties", "ACCESS_KEY");
     
-    private static String SECRET_KEY = "6y66fnq_30XXif0q7bpMlvlIDEP05P6GlnVCBuwo";
+    private static String SECRET_KEY = PropertiesUtil.getProperties("C:/qiniu.properties", "SECRET_KEY");
     
     /**
      * 上传附件
@@ -45,7 +45,7 @@ public class QiniuHelper {
     		Configuration cfg = new Configuration(Zone.zone0());
 	    	//创建上传对象
 	    	UploadManager uploadManager = new UploadManager(cfg);
-	    	
+	    	System.out.println("-----------"+ACCESS_KEY+"##"+SECRET_KEY+"------------");
 	    	//密钥配置
 	    	Auth auth = Auth.create(ACCESS_KEY, SECRET_KEY);
 	    	
