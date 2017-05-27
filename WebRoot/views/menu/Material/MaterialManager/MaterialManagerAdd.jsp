@@ -151,8 +151,8 @@ body {
 			</th>
 			<td>
 				<select id="animation" name="animation">
-					<option value="1">是</option>
 					<option value="0">否</option>
+					<option value="1">是</option>
 				</select>
 			</td>
 			<th>
